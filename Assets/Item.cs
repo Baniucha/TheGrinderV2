@@ -17,17 +17,17 @@ public class Item : ScriptableObject
 
     //lvl2 goods
     public int sandAmount;
-    public int lvl2Good2;
+    public int sandstoneAmount;
 
     //lvl3 goods
-    public int lvl3Good1;
-    public int lvl3Good2;
+    public int clayAmount;
+    public int brickAmount;
 
     //lvl4 goods
-    public int lvl4Good1;
-    public int lvl4Good2;
+    public int ironAmount;
+    public int coalAmount;
 
     //lvl5 goods
-    public int lvl5Good1;
-    public int lvl5Good2;
+    public int silverAmount;
+    public int diamondAmount;
 }

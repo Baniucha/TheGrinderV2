@@ -88,7 +88,7 @@ public class ShopSlider : MonoBehaviour
         if (goodRef.isSelling)
         {
             selling1 = true;
-            sliderInstance.maxValue = itemRef.lvl2Good2;
+            sliderInstance.maxValue = itemRef.sandstoneAmount;
             valueFinal = (int)sliderInstance.value;
         }
         else if (goodRef.isBuying)
@@ -124,7 +124,7 @@ public class ShopSlider : MonoBehaviour
         if (goodRef.isSelling)
         {
             selling2 = true;
-            sliderInstance.maxValue = itemRef.lvl3Good1;
+            sliderInstance.maxValue = itemRef.clayAmount;
             valueFinal = (int)sliderInstance.value;
         }
         else if (goodRef.isBuying)
@@ -143,7 +143,7 @@ public class ShopSlider : MonoBehaviour
         {
             selling3 = true;
 
-            sliderInstance.maxValue = itemRef.lvl3Good2;
+            sliderInstance.maxValue = itemRef.brickAmount;
             valueFinal = (int)sliderInstance.value;
         }
         else if (goodRef.isBuying)
@@ -161,7 +161,7 @@ public class ShopSlider : MonoBehaviour
         if (goodRef.isSelling)
         {
             selling4 = true;
-            sliderInstance.maxValue = itemRef.lvl4Good1;
+            sliderInstance.maxValue = itemRef.ironAmount;
             valueFinal = (int)sliderInstance.value;
         }
         else if (goodRef.isBuying)
@@ -179,7 +179,7 @@ public class ShopSlider : MonoBehaviour
         if (goodRef.isSelling)
         {
             selling5 = true;
-            sliderInstance.maxValue = itemRef.lvl4Good2;
+            sliderInstance.maxValue = itemRef.coalAmount;
             valueFinal = (int)sliderInstance.value;
         }
         else if (goodRef.isBuying)
@@ -197,7 +197,7 @@ public class ShopSlider : MonoBehaviour
         if (goodRef.isSelling)
         {
             selling6 = true;
-            sliderInstance.maxValue = itemRef.lvl5Good1;
+            sliderInstance.maxValue = itemRef.silverAmount;
             valueFinal = (int)sliderInstance.value;
         }
         else if (goodRef.isBuying)
@@ -215,7 +215,7 @@ public class ShopSlider : MonoBehaviour
         if (goodRef.isSelling)
         {
             selling7 = true;
-            sliderInstance.maxValue = itemRef.lvl5Good2;
+            sliderInstance.maxValue = itemRef.diamondAmount;
             valueFinal = (int)sliderInstance.value;
         }
         else if (goodRef.isBuying)
@@ -243,52 +243,52 @@ public class ShopSlider : MonoBehaviour
         else if (sellingSand && itemRef.sandAmount != 0)
         {
             itemRef.sandAmount -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.coin += valueFinal*2;
             shoopUi.SetActive(false);
         }
-        else if (selling1 && itemRef.lvl2Good2 != 0)
+        else if (selling1 && itemRef.sandstoneAmount != 0)
         {
-            itemRef.lvl2Good2 -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.sandstoneAmount -= valueFinal;
+            itemRef.coin += valueFinal*2;
             shoopUi.SetActive(false);
         }
-        else if (selling2 && itemRef.lvl3Good1 != 0)
+        else if (selling2 && itemRef.clayAmount != 0)
         {
-            itemRef.lvl3Good1 -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.clayAmount -= valueFinal;
+            itemRef.coin += valueFinal*3;
             shoopUi.SetActive(false);
         }
-        else if (selling3 && itemRef.lvl3Good2!= 0)
+        else if (selling3 && itemRef.brickAmount!= 0)
         {
-            itemRef.lvl3Good2 -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.brickAmount -= valueFinal;
+            itemRef.coin += valueFinal*3;
             shoopUi.SetActive(false);
         }
-        else if (selling4 && itemRef.lvl4Good1!= 0)
+        else if (selling4 && itemRef.ironAmount!= 0)
         {
-            itemRef.lvl4Good1 -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.ironAmount -= valueFinal;
+            itemRef.coin += valueFinal*5;
             shoopUi.SetActive(false);
         }
-        else if (selling5 && itemRef.lvl4Good2!= 0)
+        else if (selling5 && itemRef.coalAmount!= 0)
         {
-            itemRef.lvl4Good2 -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.coalAmount -= valueFinal;
+            itemRef.coin += valueFinal*5;
             shoopUi.SetActive(false);
         }
-        else if (selling6 && itemRef.lvl5Good1!= 0)
+        else if (selling6 && itemRef.silverAmount!= 0)
         {
-            itemRef.lvl5Good1 -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.silverAmount -= valueFinal;
+            itemRef.coin += valueFinal*8;
             shoopUi.SetActive(false);
         }
-        else if (selling7&& itemRef.lvl5Good2!= 0)
+        else if (selling7&& itemRef.diamondAmount!= 0)
         {
-            itemRef.lvl5Good2 -= valueFinal;
-            itemRef.coin += valueFinal;
+            itemRef.diamondAmount -= valueFinal;
+            itemRef.coin += valueFinal*8;
             shoopUi.SetActive(false);
         }
-
+        //buying
         if(buyingWood&&itemRef.coin!=0)
         {
             itemRef.coin -= valueFinal;
@@ -301,5 +301,43 @@ public class ShopSlider : MonoBehaviour
             itemRef.stoneAmount += valueFinal;
             shoopUi.SetActive(false);
         }
+
+        else if (buyingSand && itemRef.coin != 0)
+        {
+            itemRef.coin -= valueFinal;
+            itemRef.sandAmount += valueFinal/2;
+            shoopUi.SetActive(false);
+        }
+        else if (buying3 && itemRef.coin != 0)
+        {
+            itemRef.coin -= valueFinal/2;
+            itemRef.sandstoneAmount += valueFinal;
+            shoopUi.SetActive(false);
+        }
+        else if (buying4 && itemRef.coin != 0)
+        {
+            itemRef.coin -= valueFinal*3;
+            itemRef.clayAmount += valueFinal;
+            shoopUi.SetActive(false);
+        }
+        else if (buying5 && itemRef.coin != 0)
+        {
+            itemRef.coin -= valueFinal*3;
+            itemRef.brickAmount += valueFinal;
+            shoopUi.SetActive(false);
+        }
+        else if (buying6 && itemRef.coin != 0)
+        {
+            itemRef.coin -= valueFinal*5;
+            itemRef.coalAmount += valueFinal;
+            shoopUi.SetActive(false);
+        }
+        else if (buying7 && itemRef.coin != 0)
+        {
+            itemRef.coin -= valueFinal*5;
+            itemRef.ironAmount += valueFinal;
+            shoopUi.SetActive(false);
+        }
+
     }
 }

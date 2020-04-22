@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Inventory
   coin: 0
-  woodAmount: 63
+  woodAmount: 0
   stoneAmount: 0
-  sandAmount: 0
-  lvl2Good2: 0
-  lvl3Good1: 0
-  lvl3Good2: 0
-  lvl4Good1: 0
-  lvl4Good2: 0
-  lvl5Good1: 0
-  lvl5Good2: 0
+  sandAmount: 50
+  sandstoneAmount: 0
+  clayAmount: 0
+  brickAmount: 0
+  ironAmount: 0
+  coalAmount: 0
+  silverAmount: 0
+  diamondAmount: 0

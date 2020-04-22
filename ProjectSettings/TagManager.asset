@@ -19,6 +19,26 @@ TagManager:
   - Detector
   - Enemy
   - Shop
+  - Alchemist
+  - Blacksmith
+  - EnemyLadder
+  - Coin
+  - BigCoin
+  - ladder
+  - TreeChaser
+  - Ground22
+  - BigStone
+  - StoneEnemy
+  - ToolShop
+  - SmallHP
+  - LadderDown
+  - LadderDownOff
+  - EnemySeagull
+  - Turn
+  - GroundSand
+  - EnemyShooter
+  - SpecialSand
+  - SandStone
   layers:
   - Default
   - TransparentFX
@@ -32,11 +52,11 @@ TagManager:
   - Enemy
   - Player
   - Fire
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Tree
+  - ladder
+  - Stone
+  - ladderDown
+  - Sand
   - 
   - 
   - 

@@ -11,61 +11,56 @@ public class EnemyChaserAI : MonoBehaviour
     Vector2 walkAmount;
     float originalX;
     float zero = 0;
-    float finalWalkSpeed=3;
-    float finalMoveSpeed=4;
-    bool gonnaChaseThePlayer;
+    float finalWalkSpeed = 3;
+    float finalMoveSpeed = 4;
     public Transform player;
-    float moveSpeed = 4;
-
-
+    public float moveSpeed = 4;
+    public float lookRadius = 5f;
+    
+    Transform target;
     // Start is called before the first frame update
     void Start()
     {
-        gonnaChaseThePlayer = false;
         this.originalX = this.transform.position.x;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        target = PlayerManager.instance.player.transform;
+        StartCoroutine("WaitAfterChase");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gonnaChaseThePlayer)
+        float distance = Vector3.Distance(target.position, transform.position);
+        if (distance >= lookRadius)
         {
+
             walkAmount.y = 0;
             walkAmount.x = walkingDirection * walkSpeed * Time.deltaTime;
             if (walkingDirection > 0.0f && transform.position.x >= originalX + wallRight)
             {
+
                 walkingDirection = -1.0f;
 
             }
             else if (walkingDirection < 0.0f && transform.position.x <= originalX - wallLeft)
             {
+
                 walkingDirection = 1.0f;
 
             }
 
+          //  StartCoroutine("WaitAfterChase");
             transform.Translate(walkAmount);
         }
-        else if(gonnaChaseThePlayer)
+        if (distance <= lookRadius)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
         }
+
+        
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-        {
-            gonnaChaseThePlayer = true;
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-            {
-            gonnaChaseThePlayer = false;
-            StartCoroutine("WaitAfterChase");
-        }
-    }
+
     IEnumerator WaitAfterChase()
     {
         walkSpeed = zero;
@@ -74,4 +69,11 @@ public class EnemyChaserAI : MonoBehaviour
         walkSpeed = finalWalkSpeed;
         moveSpeed = finalMoveSpeed;
     }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, lookRadius);
+        
+    }
+
 }

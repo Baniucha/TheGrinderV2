@@ -5,6 +5,7 @@ using UnityEngine;
 public class BaseProducesGoods : MonoBehaviour
 {
     public baseScript baseRef;
+    public int wood,stone,sand,sandStone,clay,brick,coal,iron;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,44 +27,62 @@ public class BaseProducesGoods : MonoBehaviour
 
         if (baseRef.woodUpgraded)
         {
-            baseRef.itemRef.woodAmount++;
+            wood ++;
         }
         else if (baseRef.stoneUpgraded)
         {
-            baseRef.itemRef.stoneAmount++;
+            stone++;
         }
 
 
          if(baseRef.sandUpgraded)
         {
-            baseRef.itemRef.sandAmount++;
+            sand++;
         }
         else if (baseRef.good2Upgraded)
         {
-            baseRef.itemRef.lvl2Good2++;
+            sandStone++;
         }
 
 
          if(baseRef.lvl3Good1Upgraded)
         {
-            baseRef.itemRef.lvl3Good1++;
+            clay++;
         }
          else if(baseRef.lvl3Good2Upgraded)
         {
-            baseRef.itemRef.lvl3Good2++;
+            brick++;
         }
 
          if(baseRef.lvl4Good1Upgraded)
         {
-            baseRef.itemRef.lvl4Good1++;
+            iron++;
         }
          else if(baseRef.lvl4Good2Upgraded)
         {
-            baseRef.itemRef.lvl4Good2++;
+            coal++;
         }
 
       
 
         StopCoroutine("ProduceGoods");
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Player"))
+        {
+            baseRef.itemRef.woodAmount += wood;
+            baseRef.itemRef.stoneAmount += stone;
+            baseRef.itemRef.sandAmount += sand;
+            baseRef.itemRef.sandstoneAmount += sandStone;
+            baseRef.itemRef.clayAmount += clay;
+            baseRef.itemRef.brickAmount += brick;
+            baseRef.itemRef.coalAmount += coal;
+            baseRef.itemRef.ironAmount += iron;
+
+
+            wood = stone=sand=sandStone=clay=brick=coal=iron= 0;
+
+        }
     }
 }

@@ -110,12 +110,12 @@ public class baseScript : MonoBehaviour
     }
     public void BuildToLvl3()
     {
-        if (ReadyForlvlbase3 && itemRef.woodAmount >= 20 && itemRef.stoneAmount >= 20&& itemRef.sandAmount>=10&&itemRef.lvl2Good2>=10)
+        if (ReadyForlvlbase3 && itemRef.woodAmount >= 20 && itemRef.stoneAmount >= 20&& itemRef.sandAmount>=10&&itemRef.sandstoneAmount>=10)
         {
             itemRef.woodAmount -= 20;
             itemRef.stoneAmount -= 20;
             itemRef.sandAmount -= 10;
-            itemRef.lvl2Good2 -= 10;
+            itemRef.sandstoneAmount -= 10;
 
 
             baseLvl3.SetActive(true);
@@ -125,19 +125,19 @@ public class baseScript : MonoBehaviour
         }
 
         //Not enough Resources
-        else if (itemRef.woodAmount < 20 || itemRef.stoneAmount < 20 || itemRef.sandAmount < 10 || itemRef.lvl2Good2 < 10)
+        else if (itemRef.woodAmount < 20 || itemRef.stoneAmount < 20 || itemRef.sandAmount < 10 || itemRef.sandstoneAmount < 10)
         {
             textRef.text.text = "Not enough resources";
         }
     }
     public void BuildToLvl4()
     {
-        if (ReadyForlvlbase4 && itemRef.lvl3Good1 >= 10 && itemRef.lvl3Good2>=10 && itemRef.sandAmount >= 20 && itemRef.lvl2Good2 >= 20)
+        if (ReadyForlvlbase4 && itemRef.clayAmount >= 10 && itemRef.brickAmount>=10 && itemRef.sandAmount >= 20 && itemRef.sandstoneAmount >= 20)
         {
-            itemRef.lvl3Good1 -= 10;
-            itemRef.lvl3Good2 -= 10;
+            itemRef.clayAmount -= 10;
+            itemRef.brickAmount -= 10;
             itemRef.sandAmount -= 20;
-            itemRef.lvl2Good2 -=20;
+            itemRef.sandstoneAmount -= 20;
 
 
             baseLvl4.SetActive(true);
@@ -147,19 +147,19 @@ public class baseScript : MonoBehaviour
         }
 
         //Not enough Resources
-        else if (itemRef.lvl3Good1 < 10 || itemRef.lvl3Good2< 10 || itemRef.sandAmount < 20 || itemRef.lvl2Good2 < 20)
+        else if (itemRef.clayAmount < 10 || itemRef.brickAmount< 10 || itemRef.sandAmount < 20 || itemRef.sandstoneAmount < 20)
         {
             textRef.text.text = "Not enough resources";
         }
     }
     public void BuildToLvl5()
     {
-        if (ReadyForlvlbase5 && itemRef.lvl4Good1 >= 10 && itemRef.lvl4Good2 >= 10 && itemRef.lvl3Good1 >= 20 && itemRef.lvl3Good2 >= 20)
+        if (ReadyForlvlbase5 && itemRef.ironAmount >= 10 && itemRef.coalAmount>= 10 && itemRef.clayAmount>= 20 && itemRef.brickAmount>= 20)
         {
-            itemRef.lvl4Good1 -= 10;
-            itemRef.lvl4Good2 -= 10;
-            itemRef.lvl3Good1 -= 20;
-            itemRef.lvl3Good2 -= 20;
+            itemRef.ironAmount -= 10;
+            itemRef.coalAmount -= 10;
+            itemRef.clayAmount -= 20;
+            itemRef.brickAmount -= 20;
 
 
             baseLvl5.SetActive(true);
@@ -169,7 +169,7 @@ public class baseScript : MonoBehaviour
         }
 
         //Not enough Resources
-        else if (itemRef.lvl4Good1 < 10|| itemRef.lvl4Good2 < 10 || itemRef.lvl3Good1< 20 || itemRef.lvl3Good2 < 20)
+        else if (itemRef.clayAmount < 10|| itemRef.brickAmount < 10 || itemRef.coalAmount < 20 || itemRef.ironAmount < 20)
         {
             textRef.text.text = "Not enough resources";
         }
@@ -222,7 +222,7 @@ public class baseScript : MonoBehaviour
     //Below is lvl1 goods upgrade
     public void UpgradeWood()
     {
-        if (itemRef.woodAmount >= 15 && itemRef.stoneAmount >= 5)
+        if (itemRef.woodAmount >= 25 && itemRef.stoneAmount >= 50)
         {
             
             itemRef.woodAmount -= 15;
@@ -235,7 +235,7 @@ public class baseScript : MonoBehaviour
     }
     public void UpgradeStone()
     {
-        if (itemRef.woodAmount >= 5 && itemRef.stoneAmount >= 15)
+        if (itemRef.woodAmount >= 25 && itemRef.stoneAmount >= 50)
         {
             itemRef.woodAmount -= 5;
             itemRef.stoneAmount -= 15;
@@ -248,11 +248,11 @@ public class baseScript : MonoBehaviour
     //Below is lvl2 goods upgrade
     public void UpgradeSand()
     {
-        if (itemRef.sandAmount >= 15 && itemRef.lvl2Good2 >= 5)
+        if (itemRef.sandAmount >= 15 && itemRef.sandstoneAmount >= 45)
         {
 
             itemRef.sandAmount-= 15;
-            itemRef.lvl2Good2 -= 5;
+            itemRef.sandstoneAmount -= 5;
             ReadyForlvlbaseUpgrade3 = false;
             sandUpgraded = true;
             ReadyForlvlbase4 = true;
@@ -262,11 +262,11 @@ public class baseScript : MonoBehaviour
     }
     public void UpgradeGood2Lvl2()
     {
-        if (itemRef.sandAmount >= 5 && itemRef.lvl2Good2 >= 15)
+        if (itemRef.sandAmount >= 15 && itemRef.sandstoneAmount >= 45)
         {
 
             itemRef.sandAmount -= 5;
-            itemRef.lvl2Good2 -= 15;
+            itemRef.sandstoneAmount -= 15;
             ReadyForlvlbaseUpgrade3 = false;
             good2Upgraded = true;
             ReadyForlvlbase4 = true;
@@ -276,11 +276,11 @@ public class baseScript : MonoBehaviour
     }
     public void UpgradeGood3Lvl1()
     {
-        if (itemRef.lvl3Good1 >= 5 && itemRef.lvl3Good2 >= 15)
+        if (itemRef.clayAmount >= 10 && itemRef.brickAmount >= 30)
         {
 
-            itemRef.lvl3Good2 -= 15;
-            itemRef.lvl3Good1 -= 5;
+            itemRef.clayAmount -= 10;
+            itemRef.brickAmount -= 30;
             ReadyForlvlbaseUpgrade4 = false;
             lvl3Good1Upgraded = true;
             ReadyForlvlbase5 = true;
@@ -290,11 +290,11 @@ public class baseScript : MonoBehaviour
     }
     public void UpgradeGood3Lvl2()
     {
-        if (itemRef.lvl3Good2 >= 5 && itemRef.lvl3Good1 >= 15)
+        if (itemRef.brickAmount >= 10 && itemRef.clayAmount >= 30)
         {
 
-            itemRef.lvl3Good2 -= 5;
-            itemRef.lvl3Good1 -= 15;
+            itemRef.brickAmount -= 10;
+            itemRef.clayAmount -= 30;
             ReadyForlvlbaseUpgrade4 = false;
             lvl3Good2Upgraded = true;
             ReadyForlvlbase5 = true;
@@ -304,11 +304,11 @@ public class baseScript : MonoBehaviour
     }
     public void UpgradeGood4Lvl1()
     {
-        if (itemRef.lvl4Good1 >= 15 && itemRef.lvl4Good2 >= 5)
+        if (itemRef.ironAmount >= 15 && itemRef.coalAmount >= 5)
         {
 
-            itemRef.lvl4Good2 -= 5;
-            itemRef.lvl4Good1 -= 15;
+            itemRef.coalAmount -= 5;
+            itemRef.ironAmount -= 15;
             ReadyForlvlbaseUpgrade4 = false;
             lvl4Good1Upgraded = true;
             ReadyForlvlbase5 = true;
@@ -320,11 +320,11 @@ public class baseScript : MonoBehaviour
     }
     public void UpgradeGood4Lvl2()
     {
-        if (itemRef.lvl3Good2 >= 5 && itemRef.lvl3Good1 >= 15)
+        if (itemRef.clayAmount >= 5 && itemRef.brickAmount>= 15)
         {
 
-            itemRef.lvl3Good2 -= 5;
-            itemRef.lvl3Good1 -= 15;
+            itemRef.clayAmount -= 5;
+            itemRef.brickAmount -= 15;
             ReadyForlvlbaseUpgrade4 = false;
             lvl4Good2Upgraded = true;
             ReadyForlvlbase5 = true;

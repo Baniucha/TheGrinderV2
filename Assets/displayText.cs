@@ -41,13 +41,13 @@ public class displayText : MonoBehaviour
         woodAmount.text = "Wood: " + itemRef.woodAmount.ToString();
         stoneAmount.text = "Stone: " + itemRef.stoneAmount.ToString();
         sandAmount.text = "Sand: " + itemRef.sandAmount.ToString();
-        lvl2Good.text = "Good1: " + itemRef.lvl2Good2.ToString();
-        lvl3Good.text = "Good1: " + itemRef.lvl3Good1.ToString();
-        lvl3Good2.text = "Good1: " + itemRef.lvl3Good2.ToString();
-        lvl4Good.text = "Good1: " + itemRef.lvl4Good1.ToString();
-        lvl4Good2.text = "Good1: " + itemRef.lvl4Good2.ToString();
-        lvl5Good.text = "Good1: " + itemRef.lvl5Good1.ToString();
-        lvl5Good2.text = "Good1: " + itemRef.lvl5Good2.ToString();
+        lvl2Good.text = "Good1: " + itemRef.sandstoneAmount.ToString();
+        lvl3Good.text = "Good1: " + itemRef.clayAmount.ToString();
+        lvl3Good2.text = "Good1: " + itemRef.brickAmount.ToString();
+        lvl4Good.text = "Good1: " + itemRef.ironAmount.ToString();
+        lvl4Good2.text = "Good1: " + itemRef.coalAmount.ToString();
+        lvl5Good.text = "Good1: " + itemRef.silverAmount.ToString();
+        lvl5Good2.text = "Good1: " + itemRef.diamondAmount.ToString();
 
         if(shopSliderRef.sellindStone)
         {

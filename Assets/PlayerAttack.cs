@@ -9,25 +9,37 @@ public class PlayerAttack : MonoBehaviour
    
     public Transform attackPos;
     public LayerMask enemyMask;
+    public LayerMask treeMask;
+    public LayerMask stoneMask;
+    public LayerMask sandMask;
     public float attackRange;
     public int dmg;
-    public GameObject sword;
+    public int dmgToObj;
+    public GameObject sword,shield;
+    public bool imShielding;
+    public ToolShop tool;
+    public Audio audio;
     // Start is called before the first frame update
     void Start()
     {
         sword.SetActive(false);
+        shield.SetActive(false);
+        imShielding = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timeBetweenAtack <= 0)
+        if (timeBetweenAtack <= 0&&!imShielding)
         {
 
             if (Input.GetKey(KeyCode.F)|| Input.GetKeyDown(KeyCode.F))
             {
                 sword.SetActive(true);
                 AttackEnemy();
+                AttackTree();
+                AttackStone();
+                AttackSand();
             }
             else if (Input.GetKeyUp(KeyCode.F))
             {
@@ -41,7 +53,16 @@ public class PlayerAttack : MonoBehaviour
             timeBetweenAtack -= Time.deltaTime;
             sword.SetActive(false);
         }
-        
+        if(Input.GetMouseButton(1))
+        {
+            shield.SetActive(true);
+            imShielding = true;
+        }
+        else
+        {
+            shield.SetActive(false);
+            imShielding = false;
+        }
 
     }
     private void OnDrawGizmosSelected()
@@ -55,6 +76,43 @@ public class PlayerAttack : MonoBehaviour
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(dmg);
+        }
+    }
+    void AttackTree()
+    {
+        Collider2D[] treesToDmg = Physics2D.OverlapCircleAll(attackPos.position, attackRange, treeMask);
+       
+            for (int i = 0; i < treesToDmg.Length; i++)
+            {
+            if (tool.iHaveAxe)
+            {
+                audio.chopTree.Play();
+                treesToDmg[i].GetComponent<Tree>().TakeDmg(dmgToObj);
+            }  
+            }
+    }
+    void AttackStone()
+    {
+        Collider2D[] stonesToDmg = Physics2D.OverlapCircleAll(attackPos.position, attackRange, stoneMask);
+        for (int i = 0; i < stonesToDmg.Length; i++)
+        {
+            if (tool.iHavePickaxe)
+            {
+                audio.pickaxe.Play();
+                stonesToDmg[i].GetComponent<BigStone>().TakeDmg(dmgToObj);
+            }
+        }
+    }
+    void AttackSand()
+    {
+        Collider2D[] sandsToDmg = Physics2D.OverlapCircleAll(attackPos.position, attackRange, sandMask);
+        for (int i = 0; i < sandsToDmg.Length; i++)
+        {
+            if (tool.iHaveShovel)
+            {
+                audio.shovel.Play();
+                sandsToDmg[i].GetComponent<BigSand>().TakeDmg(dmgToObj);
+            }
         }
     }
 }
