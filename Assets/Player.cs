@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 10f;
-    public bool onPos1, onPos2, onPos3, onPos22, onSandPos;
+    public bool onPos1, onPos2, onPos3, onPos22, onSandPos, onClayPos;
     public float jumpForce;
     public float checkRadius;
     public float jumpTime = 0.3f;
@@ -22,16 +22,22 @@ public class Player : MonoBehaviour
     float jumpTimeCounter;
     public float distance;
     int extraJumps;
-    public float maxHealth = 100f;
+    public float maxHealth;
     public float actualHealth;
+    public float air;
+    public float maxAir;
     Rigidbody2D rb;
     public Item itemRef;
     public bool ableToGoUp;
     public bool ableToGoDown;
     public Audio audio;
+    public bool swim;
     // Start is called before the first frame update
     void Start()
     {
+        maxAir = 100;
+        air = maxAir;
+        maxHealth = 100;
         ableToGoUp = false;
         ableToGoDown = false;
         actualHealth = maxHealth;
@@ -104,7 +110,15 @@ public class Player : MonoBehaviour
         {
             this.GetComponent<Collider2D>().isTrigger = false;
         }
-       
+        if (air > maxAir)
+        {
+            air = maxAir;
+        }
+        if (air <= 0)
+        {
+            air = 0;
+            actualHealth -= Time.deltaTime * 4;
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -130,15 +144,27 @@ public class Player : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, inputVertical * speed);
             rb.gravityScale = 0;
         }
+        else if (swim)
+        {
+            air -= Time.deltaTime * 5f;
+          jumpForce = 3;
+            rb.gravityScale = 1f;
+        }
         else
         {
+            air += Time.deltaTime * 5f;
+            jumpForce = 15;
             rb.gravityScale = 5;
         }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        if(other.CompareTag("Swim"))
+        {
+            swim = true;
+        }
         if (other.CompareTag("Ground1"))
         {
             onPos1 = true;
@@ -160,10 +186,17 @@ public class Player : MonoBehaviour
         {
             onSandPos = true;
         }
-
+        if (other.CompareTag("GroundClay"))
+        {
+            onClayPos = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (other.CompareTag("Swim"))
+        {
+            swim = false;
+        }
         if (other.CompareTag("Ground1"))
         {
             onPos1 = false;
@@ -184,6 +217,14 @@ public class Player : MonoBehaviour
         {
             onSandPos = false;
         }
+        if(other.CompareTag("GroundClay"))
+        {
+            onClayPos = false;
+        }
+    /*    if(other.CompareTag("Fish"))
+        {
+            hp-
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -229,6 +270,18 @@ public class Player : MonoBehaviour
             audio.pickUp.Play();
             Destroy(collision.gameObject);
             itemRef.sandstoneAmount++;
+        }
+        if (collision.gameObject.tag == "Clay")
+        {
+            audio.pickUp.Play();
+            Destroy(collision.gameObject);
+            itemRef.clayAmount++;
+        }
+        if (collision.gameObject.tag == "Brick")
+        {
+            audio.pickUp.Play();
+            Destroy(collision.gameObject);
+            itemRef.brickAmount++;
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class HealthBarScript : MonoBehaviour
 {
     Image healthBar;
+
     public Player playerhp;
     
     // Start is called before the first frame update
@@ -18,5 +19,6 @@ public class HealthBarScript : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = playerhp.actualHealth / playerhp.maxHealth;
+
     }
 }

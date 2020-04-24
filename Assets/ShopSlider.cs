@@ -23,7 +23,7 @@ public class ShopSlider : MonoBehaviour
     private void Start()
     {
         sellindStone = selling1 = selling2 = selling3 = selling4 = selling5 = selling6 = selling7 = sellingSand = sellingWood = false;
-        buying1 = buying2 = buying3 = buying4 = buying5 = buying6 = buying7 = buyingSand = buyingStone = buyingWood = false;
+        buying1 = buying2 = buying3 = buying4 = buying5 = buyingSand = buyingStone = buyingWood = false;
         sliderInstance.minValue = 0;
         sliderInstance.maxValue = itemRef.woodAmount;
         sliderInstance.wholeNumbers = true;

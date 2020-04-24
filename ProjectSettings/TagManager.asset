@@ -39,6 +39,12 @@ TagManager:
   - EnemyShooter
   - SpecialSand
   - SandStone
+  - Swim
+  - GroundClay
+  - SpecialClay
+  - Clay
+  - Brick
+  - Fish
   layers:
   - Default
   - TransparentFX
@@ -57,7 +63,7 @@ TagManager:
   - Stone
   - ladderDown
   - Sand
-  - 
+  - Clay
   - 
   - 
   - 

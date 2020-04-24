@@ -25,7 +25,7 @@ public class BigSand : MonoBehaviour
         {
             if (hpSand <= 0)
             {
-                int r = Random.Range(0, 10);
+                int r = Random.Range(0, 2);
                 Rigidbody2D rb;
                 rb = Instantiate(sand, new Vector3(thisTransform.position.x, thisTransform.position.y, thisTransform.position.z - 2), transform.rotation);
                 if(r==0)
@@ -40,7 +40,7 @@ public class BigSand : MonoBehaviour
         {
             if (hpSand <= 0)
             {
-                int r = Random.Range(0, 1);
+                int r = Random.Range(0, 10);
                 Rigidbody2D rb;
                 rb = Instantiate(sand, new Vector3(thisTransform.position.x, thisTransform.position.y, thisTransform.position.z - 2), transform.rotation);
                 if(r==0)

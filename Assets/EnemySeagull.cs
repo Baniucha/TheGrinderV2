@@ -56,11 +56,22 @@ public class EnemySeagull : MonoBehaviour
         {
             if (moveRight)
             {
-                transform.Translate(speed * Time.deltaTime, 0, 0);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                transform.Translate(-speed * Time.deltaTime, 0, 0);
+                if(transform.rotation!=Quaternion.Euler(0,0,0))
+                    {
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+
+                }
             }
             else
             {
+                transform.rotation = Quaternion.Euler(0,-180, 0);
                 transform.Translate(-speed * Time.deltaTime, 0, 0);
+                if(transform.rotation != Quaternion.Euler(0, -180, 0))
+                {
+                    transform.rotation = Quaternion.Euler(0, -180, 0);
+                }
             }
         }
     }
