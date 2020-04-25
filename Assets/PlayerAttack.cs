@@ -13,7 +13,8 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask stoneMask;
     public LayerMask sandMask;
     public LayerMask clayMask;
-
+    public LayerMask coalMask;
+    public LayerMask enemyCoalMask;
     public float attackRange;
     public int dmg;
     public int dmgToObj;
@@ -44,6 +45,8 @@ public class PlayerAttack : MonoBehaviour
                 AttackStone();
                 AttackSand();
                 AttackClay();
+                AttackCoal();
+                AttackEnemyCoal();
             }
             else if (Input.GetKeyUp(KeyCode.F))
             {
@@ -78,6 +81,15 @@ public class PlayerAttack : MonoBehaviour
     {
         
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyMask);
+        for (int i = 0; i < enemiesToDamage.Length; i++)
+        {
+            enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(dmg);
+        }
+    }
+    void AttackEnemyCoal()
+    {
+
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, enemyCoalMask);
         for (int i = 0; i < enemiesToDamage.Length; i++)
         {
             enemiesToDamage[i].GetComponent<Enemy>().TakeDamage(dmg);
@@ -129,6 +141,18 @@ public class PlayerAttack : MonoBehaviour
             {
                 audio.shovel.Play();
                 clayToDmg[i].GetComponent<BigClay>().TakeDmg(dmgToObj);
+            }
+        }
+    }
+    void AttackCoal()
+    {
+        Collider2D[] clayToDmg = Physics2D.OverlapCircleAll(attackPos.position, attackRange, coalMask);
+        for (int i = 0; i < clayToDmg.Length; i++)
+        {
+            if (tool.iHavePickaxe)
+            {
+                clayToDmg[i].GetComponent<BigCoal>().TakeDmg(dmgToObj);
+                audio.shovel.Play();
             }
         }
     }

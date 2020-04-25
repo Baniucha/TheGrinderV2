@@ -45,6 +45,14 @@ TagManager:
   - Clay
   - Brick
   - Fish
+  - GroundCoal
+  - SpecialCoal
+  - SuperSpecialCoal
+  - C1
+  - C2
+  - C3
+  - EnemyCoal
+  - EnemyCoal1
   layers:
   - Default
   - TransparentFX
@@ -64,8 +72,8 @@ TagManager:
   - ladderDown
   - Sand
   - Clay
-  - 
-  - 
+  - Coal
+  - enemyCoalMask
   - 
   - 
   - 

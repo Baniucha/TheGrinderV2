@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: 
   name: Inventory
-  coin: 0
+  coin: 18
   woodAmount: 0
   stoneAmount: 0
   sandAmount: 50
   sandstoneAmount: 0
-  clayAmount: 0
-  brickAmount: 0
+  clayAmount: 2
+  brickAmount: 2
   ironAmount: 0
   coalAmount: 0
   silverAmount: 0

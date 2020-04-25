@@ -15,12 +15,16 @@ public class Enemy : MonoBehaviour
     public GameObject bigCoin;
     public Rigidbody2D smallHP;
     Transform thisTransform;
-
+    CoalEnemyManager manager;
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.Find("EnemyManager").GetComponent<CoalEnemyManager>();
         thisTransform = GetComponent<Transform>();
-
+        if(this.gameObject.tag=="EnemyCoal" || this.gameObject.tag == "EnemyCoal1")
+        {
+            health = 3;
+        }
     }
     private void OnEnable()
     {
@@ -33,7 +37,12 @@ public class Enemy : MonoBehaviour
     }
     private void OnDisable()
     {
-        transform.GetComponent<Rigidbody2D>().Sleep();  
+        if (this.tag == "StoneEnemy")
+        {
+
+            transform.GetComponent<Rigidbody2D>().Sleep();
+
+        }
     }
     // Update is called once per frame
     void Update()
@@ -49,28 +58,18 @@ public class Enemy : MonoBehaviour
             stunnedTime -= Time.deltaTime;
         }
         //Movement / FSM
-        if (health <= 0)
+        if (health <= 0&& this.tag!="EnemyCoal"&&this.tag!="EnemyCoal1")
         {
-            if (this.tag == "StoneChaser")
-            {
-                RandomCoin();
-                gameObject.SetActive(false);
-                health = 5;
-            }
-            else
-            {
                 RandomCoin();
                 Destroy(gameObject);
-            }
         }
-        if(this.tag=="TreeChaser"&& health<=0)
+        if((this.tag=="EnemyCoal" && health<=0) || (this.tag == "EnemyCoal1"&&health<=0))
         {
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
-        if (health<=0 && this.tag =="StoneEnemy")
-        {
-            gameObject.SetActive(false);
-        }
+
+  
+        
     }
 
     void RandomCoin()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed = 10f;
-    public bool onPos1, onPos2, onPos3, onPos22, onSandPos, onClayPos;
+    public bool onPos1, onPos2, onPos3, onPos22, onSandPos, onClayPos, onCoalPos;
     public float jumpForce;
     public float checkRadius;
     public float jumpTime = 0.3f;
@@ -190,6 +190,10 @@ public class Player : MonoBehaviour
         {
             onClayPos = true;
         }
+        if(other.CompareTag("GroundCoal"))
+        {
+            onCoalPos = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -221,10 +225,14 @@ public class Player : MonoBehaviour
         {
             onClayPos = false;
         }
-    /*    if(other.CompareTag("Fish"))
+        if(other.CompareTag("Fish"))
         {
-            hp-
-        }*/
+            actualHealth -= 2.5f;
+        }
+        if (other.CompareTag("GroundCoal"))
+        {
+            onCoalPos = false;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

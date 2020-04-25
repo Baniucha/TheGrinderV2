@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public float moveSpeed = 7f;
     int dmg = 20;
+    int smallDmg = 10;
     Player target;
     public PlayerAttack player;
     // Start is called before the first frame update
@@ -24,9 +25,16 @@ public class Bullet : MonoBehaviour
     {
         if(collision.gameObject.tag=="Player")
         {
-            if(!player.imShielding)
+            if (!player.imShielding)
             {
-                player.GetComponent<invulnerability>().PlayerTakesDmg(dmg);
+                if (this.gameObject.name == "SmallBullet")
+                {
+                    player.GetComponent<invulnerability>().PlayerTakesDmg(smallDmg);
+                }
+                else
+                {
+                    player.GetComponent<invulnerability>().PlayerTakesDmg(dmg);
+                }
             }
             Destroy(gameObject);
             
