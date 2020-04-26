@@ -9,6 +9,8 @@ public class Audio : MonoBehaviour
     public AudioSource shovel;
     public AudioSource pickUp;
     public AudioSource cannon;
+    public AudioSource gunShot;
+    public AudioSource rock;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,8 @@ public class Audio : MonoBehaviour
         shovel = sources [2];
         pickUp = sources[3];
         cannon = sources[4];
+        gunShot = sources[5];
+        rock = sources[6];
     }
 
     // Update is called once per frame

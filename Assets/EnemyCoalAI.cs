@@ -19,7 +19,7 @@ public class EnemyCoalAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fireRate = 3;
+        fireRate = Random.Range(1,5);
         nextFire = Time.time;
 
     }
@@ -34,7 +34,7 @@ public class EnemyCoalAI : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, pos1, speed * Time.deltaTime);
                 if (Time.time > nextFire)
                 {
-                    //audio.cannon.Play();
+                    audio.gunShot.Play();
                     Instantiate(bullet, transform.position, Quaternion.identity);
                     nextFire = Time.time + fireRate;
                 }
@@ -44,7 +44,7 @@ public class EnemyCoalAI : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, pos2, speed * Time.deltaTime);
                 if (Time.time > nextFire)
                 {
-                    //audio.cannon.Play();
+                    audio.gunShot.Play();
                     Instantiate(bullet, transform.position, Quaternion.identity);
                     nextFire = Time.time + fireRate;
                 }

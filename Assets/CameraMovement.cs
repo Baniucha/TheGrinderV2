@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     public Player posRef;
-    public Transform pos1, pos2,pos3,pos22,posSand,posClay;
+    public Transform pos1, pos2,pos3,pos22,posSand,posClay,posCoal;
     public float step = 5;
     // Start is called before the first frame update
     void Start()
@@ -39,6 +39,10 @@ public class CameraMovement : MonoBehaviour
         else if (posRef.onClayPos)
         {
             transform.position = Vector3.MoveTowards(this.transform.position, posClay.transform.position, step * Time.deltaTime);
+        }
+        else if (posRef.onCoalPos)
+        {
+            transform.position = Vector3.MoveTowards(this.transform.position, posCoal.transform.position, step * Time.deltaTime);
         }
     }
   
