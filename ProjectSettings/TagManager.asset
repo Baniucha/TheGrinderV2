@@ -53,6 +53,10 @@ TagManager:
   - C3
   - EnemyCoal
   - EnemyCoal1
+  - Coal
+  - Iron
+  - Diamond
+  - Silver
   layers:
   - Default
   - TransparentFX

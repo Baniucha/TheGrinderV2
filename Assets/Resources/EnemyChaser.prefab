@@ -190,7 +190,7 @@ MonoBehaviour:
   lookRadiusAttack: 1.5
   attackPos: {fileID: 2829407796094527346}
   timeBetweenAttack: 0
-  startTimeBetweenAttack: 0.5
+  startTimeBetweenAttack: 1.5
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
