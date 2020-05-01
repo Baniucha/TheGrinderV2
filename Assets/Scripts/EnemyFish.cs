@@ -42,5 +42,7 @@ public class EnemyFish : MonoBehaviour
 
         yield return new WaitForSeconds(.1f);
         hasArrived = false;
+
     }
+
 }

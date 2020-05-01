@@ -36,6 +36,7 @@ public class GoodChanger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             goodChangerUI.SetActive(false);
+            textNotEnough.gameObject.SetActive(false);
         }
 
     }

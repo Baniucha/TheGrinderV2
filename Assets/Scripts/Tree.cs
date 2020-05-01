@@ -19,6 +19,7 @@ public class Tree : MonoBehaviour
     bool spawned;
     private void Awake()
     {
+        countDown = .45f;
         //SET VARIABLES
         thisTransform = GetComponent<Transform>();
         startPos = this.transform.position;

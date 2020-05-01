@@ -30,6 +30,8 @@ public class enemyShooter : MonoBehaviour
             {
                 audio.cannon.Play();
                 Instantiate(bullet, transform.position, Quaternion.identity);
+                fireRate = Random.Range(0, 6);
+
                 nextFire = Time.time + fireRate;
             }
         }

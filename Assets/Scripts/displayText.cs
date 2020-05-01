@@ -134,6 +134,59 @@ public class displayText : MonoBehaviour
         {
             sellingOrBuying.text = " You are buying iron now";
         }
+        if(itemRef.woodAmount<0)
+        {
+            woodAmount.text = "Wood: " +0;
 
+        }
+        if(itemRef.stoneAmount<0)
+        {
+            stoneAmount.text = "Stone: " + 0;
+
+        }
+        if(itemRef.sandAmount<0)
+        {
+            sandAmount.text = "Sand: " + 0;
+
+        }
+        if(itemRef.sandstoneAmount<0)
+        {
+            lvl2Good.text = "Sandstone: " + 0;
+            lvl3Good.text = "Clay: " + 0;
+            lvl3Good2.text = "Brick: " + 0;
+            lvl4Good.text = "Iron: " + 0;
+            lvl4Good2.text = "Coal: " + 0;
+            lvl5Good.text = "Silver: " + 0;
+            lvl5Good2.text = "Diamond: " + 0;
+        }
+        if(itemRef.clayAmount<0)
+        {
+            lvl3Good.text = "Clay: " + 0;
+
+        }
+        if(itemRef.brickAmount<0)
+        {
+            lvl3Good2.text = "Brick: " + 0;
+
+        }
+        if(itemRef.coalAmount<0)
+        {
+            lvl4Good2.text = "Coal: " + 0;
+
+        }
+        if(itemRef.ironAmount<0)
+        {
+            lvl4Good.text = "Iron: " + 0;
+
+        }
+        if(itemRef.silverAmount<0)
+        {
+            lvl5Good.text = "Silver: " + 0;
+        }
+        if(itemRef.diamondAmount<0)
+        {
+            lvl5Good2.text = "Diamond: " + 0;
+
+        }
     }
 }

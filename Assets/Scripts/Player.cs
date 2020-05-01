@@ -223,6 +223,11 @@ public class Player : MonoBehaviour
         {
             onCoalPos = true;
         }
+        if(other.CompareTag("Fish"))
+            {
+           
+            actualHealth -= 2;
+        }
     }
     //DISABLE BOOL VARIABLES ON TRIGGER EXIT
     private void OnTriggerExit2D(Collider2D other)
@@ -255,10 +260,7 @@ public class Player : MonoBehaviour
         {
             onClayPos = false;
         }
-        if(other.CompareTag("Fish"))
-        {
-            actualHealth -= 2.5f;
-        }
+
         if (other.CompareTag("GroundCoal"))
         {
             onCoalPos = false;
@@ -303,7 +305,7 @@ public class Player : MonoBehaviour
         {
             audio.pickUp.Play();
             Destroy(collision.gameObject);
-            itemRef.stoneAmount++;
+            itemRef.sandAmount++;
         }
        if(collision.gameObject.tag=="SandStone")
         {
